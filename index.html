@@ -1,169 +1,124 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Senador Jayme Campos</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <style>
-    body {
-      font-family: 'Roboto', sans-serif;
-      margin: 0;
-      padding: 0;
-      color: #333;
-      background-color: #f9f9f9;
-    }
-    header {
-      background-color: #013e7a;
-      color: white;
-      padding: 20px 0;
-      text-align: center;
-    }
-    header h1 {
-      margin: 0;
-      font-size: 28px;
-    }
-    section {
-      padding: 40px 20px;
-      max-width: 960px;
-      margin: 0 auto;
-    }
-    h2 {
-      color: #013e7a;
-    }
-    .bio p {
-      line-height: 1.6;
-      text-align: justify;
-    }
-    .chart-container {
-      background-color: #fff;
-      padding: 20px;
-      border-radius: 10px;
-    }
-    .noticias {
-      background-color: #f0f0f0;
-      padding: 30px 20px;
-      border-radius: 10px;
-    }
-    .noticia {
-      margin-bottom: 20px;
-    }
-    .noticia h4 {
-      margin: 0;
-      color: #013e7a;
-    }
-    .noticia p {
-      margin-top: 5px;
-      font-size: 15px;
-    }
-    footer {
-      text-align: center;
-      background-color: #013e7a;
-      color: white;
-      padding: 20px 10px;
-      font-size: 14px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <title>Senador Jayme Campos</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+        body {
+            font-family: "Segoe UI", sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f6f8;
+        }
+        header {
+            background-color: #003366;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        section {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        h2 {
+            color: #003366;
+        }
+        .bio-image {
+            width: 100%;
+            margin-top: 15px;
+            border-radius: 8px;
+        }
+        .chart-image {
+            width: 100%;
+            border-radius: 8px;
+            margin: 30px 0;
+        }
+        .news-image {
+            width: 100%;
+            margin-top: 15px;
+            border-radius: 8px;
+        }
+        footer {
+            background-color: #003366;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+        .social-links a {
+            color: white;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+    </style>
 </head>
 <body>
 
-  <header>
+<header>
     <h1>Senador Jayme Campos</h1>
     <p>Trabalho, compromisso e resultados para Mato Grosso</p>
-  </header>
+</header>
 
-  <section class="bio">
+<section>
     <h2>Biografia</h2>
-    <p>
-      <strong>Jayme Veríssimo de Campos</strong>, 73 anos, é natural de Mato Grosso e possui mais de 40 anos de vida pública. Foi prefeito de Várzea Grande (1983–1988), governador de MT (1991–1995) e retornou à prefeitura por dois mandatos (1997–2004). Foi eleito senador em 2006 e novamente em 2018, com mais de 490 mil votos. É casado com <strong>Lucimar Sacre de Campos</strong>, pai de quatro filhos e avô de quatro netos. Irmão do deputado estadual <strong>Júlio Campos</strong>, Jayme atua em diversas comissões no Senado e já destinou mais de <strong>R$ 1 bilhão</strong> em emendas ao estado de Mato Grosso.
-    </p>
-  </section>
+    <p><strong>Jayme Veríssimo de Campos</strong>, 73 anos, é natural de Mato Grosso e possui mais de 40 anos de vida pública. Foi prefeito de Várzea Grande (1983–1988), governador de MT (1991–1995) e retornou à prefeitura por dois mandatos (1997–2004). Foi eleito senador em 2006 e novamente em 2018, com mais de <strong>490 mil votos</strong>. É casado com <strong>Lucimar Sacre de Campos</strong>, pai de quatro filhos e avô de quatro netos. Irmão do deputado estadual <strong>Júlio Campos</strong>, Jayme atua em diversas comissões no Senado e já destinou mais de <strong>R$ 1 bilhão</strong> em emendas ao estado de Mato Grosso.</p>
+    <img src="Site%2001.jpeg" alt="Senador Jayme Campos" class="bio-image">
+</section>
 
-  <section id="emendas">
+<section>
     <h2>Investimentos por Região de Mato Grosso</h2>
     <p>Valores destinados via emendas parlamentares (2023–2024)</p>
-    <div class="chart-container">
-      <canvas id="graficoEmendas" height="300"></canvas>
-    </div>
-  </section>
+    <img src="E6FE9C14-3B9F-4A3F-8BDB-AB6F229E4662.jpeg" alt="Jayme no Senado" class="chart-image">
+    <div id="grafico" style="width: 100%; height: 400px;"></div>
+    <script>
+        var data = [{
+            x: ['Centro-Sul', 'Norte', 'Noroeste', 'Sudeste'],
+            y: [24000000, 8000000, 6000000, 5500000],
+            type: 'bar',
+            marker: {
+                color: ['#1b998b', '#ed7d3a', '#143642', '#ffc857']
+            }
+        }];
 
-  <section class="noticias">
-    <h2>Notícias</h2>
-
-    <div class="noticia">
-      <h4>Jayme destina recursos para a saúde em todo o estado</h4>
-      <p>Emendas viabilizam reformas de hospitais e aquisição de ambulâncias em diversas regiões de MT.</p>
-    </div>
-
-    <div class="noticia">
-      <h4>R$ 10 milhões para a educação técnica</h4>
-      <p>Senador garante investimento para escolas técnicas em municípios do Norte e Noroeste mato-grossense.</p>
-    </div>
-
-  </section>
-
-  <footer>
-    © 2025 Senador Jayme Campos | Desenvolvido para fins institucionais
-  </footer>
-
-  <script>
-    const ctx = document.getElementById('graficoEmendas').getContext('2d');
-    new Chart(ctx, {
-      type: 'bar',
-      data: {
-        labels: ['Centro-Sul', 'Norte', 'Noroeste', 'Sudeste'],
-        datasets: [{
-          label: 'Valor Investido (R$)',
-          data: [24298621, 7616220, 5970220, 5550264],
-          backgroundColor: ['#2a9d8f', '#e76f51', '#264653', '#f4a261'],
-          borderRadius: 5
-        }]
-      },
-      options: {
-        responsive: true,
-        scales: {
-          y: {
-            ticks: {
-              callback: function(value) {
-                return 'R$ ' + value.toLocaleString('pt-BR');
-              }
+        var layout = {
+            margin: { t: 30 },
+            yaxis: {
+                title: 'Valor (R$)',
+                tickprefix: 'R$ ',
+                separatethousands: true
             },
-            title: {
-              display: true,
-              text: 'Valor (R$)',
-              font: {
-                size: 14,
-                weight: 'bold'
-              }
+            xaxis: {
+                title: 'Região de Planejamento'
             }
-          },
-          x: {
-            title: {
-              display: true,
-              text: 'Região de Planejamento',
-              font: {
-                size: 14,
-                weight: 'bold'
-              }
-            }
-          }
-        },
-        plugins: {
-          tooltip: {
-            callbacks: {
-              label: function(context) {
-                return 'R$ ' + context.raw.toLocaleString('pt-BR');
-              }
-            }
-          },
-          legend: {
-            display: false
-          }
-        }
-      }
-    });
-  </script>
+        };
+
+        Plotly.newPlot('grafico', data, layout);
+    </script>
+</section>
+
+<section>
+    <h2>Notícias</h2>
+    <ul>
+        <li><a href="https://www.agenciadanoticia.com.br/mato-grosso/noticia/140429/projeto-de-jayme-campos-propoe-revelar-minerais-escondidos-nos-produtos-do-dia-a-dia" target="_blank">Jayme propõe revelar minerais escondidos nos produtos do dia a dia</a></li>
+        <li><a href="https://www.vgnoticias.com.br/politica/jayme-campos-propoe-transformar-riquezas-minerais-em-trunfo-contra-tarifaco-dos-eua/134473" target="_blank">Transformar riquezas minerais em trunfo contra tarifaço dos EUA</a></li>
+        <li><a href="https://issoenoticia.com.br/jayme-campos-defende-diplomacia-e-coalizao-internacional-contra-o-tarifaco/" target="_blank">Diplomacia e coalizão internacional contra o tarifaço</a></li>
+        <li><a href="https://fococidade.com.br/materia/69298/jayme-cobra-plano-de-contingencia-do-governo-federal-contra-tarifaco-" target="_blank">Jayme cobra plano de contingência contra tarifaço</a></li>
+    </ul>
+    <img src="8950DE82-FAEA-4556-B028-3D2C698710B3.jpeg" alt="Jayme discursando" class="news-image">
+    <img src="875E4131-EF52-4E28-8AB3-97FFAAAA897A.jpeg" alt="Jayme com senadores" class="news-image">
+</section>
+
+<footer>
+    <p>&copy; 2025 Senador Jayme Campos | Desenvolvido para fins institucionais</p>
+    <div class="social-links">
+        <a href="https://www.instagram.com/jaymecamposmt?igsh=ODlidnV3dWVnd3U3" target="_blank">Instagram</a> |
+        <a href="https://m.facebook.com/jayme.campos/?" target="_blank">Facebook</a> |
+        <a href="https://x.com/jaymecamposmt?s=21" target="_blank">X (Twitter)</a> |
+        <a href="https://www.tiktok.com/@jaymecamposmt" target="_blank">TikTok</a>
+    </div>
+</footer>
 
 </body>
 </html>

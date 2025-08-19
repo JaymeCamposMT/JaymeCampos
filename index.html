@@ -1,122 +1,134 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <title>Senador Jayme Campos</title>
-    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-    <style>
-        body {
-            font-family: "Segoe UI", sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f6f8;
-        }
-        <header style="background-color: #003366; color: white; padding: 10px 0; text-align: center; position: relative;">
-    <!-- Logo do Jayme Campos -->
-    <img src="logo-jayme.png" alt="Logo Jayme Campos" style="position: absolute; top: 10px; left: 10px; height: 50px;">
+  <meta charset="UTF-8">
+  <title>Senador Jayme Campos</title>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <style>
+    body {
+      font-family: "Segoe UI", sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f6f8;
+    }
 
-    <h1 style="margin: 0;">Senador Jayme Campos</h1>
-    <p style="margin: 5px 0 0;">Trabalho, compromisso e resultados para Mato Grosso</p>
+    .site-header {
+      background-color: #003366;
+      color: white;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
 
-    <!-- Bandeira de Mato Grosso -->
-    <img src="bandeira-mt.png" alt="Bandeira de Mato Grosso" style="position: absolute; top: 10px; right: 10px; height: 40px;">
-</header>
-        section {
-            max-width: 900px;
-            margin: 40px auto;
-            padding: 0 20px;
-        }
-        h2 {
-            color: #003366;
-        }
-        .bio-image {
-            width: 100%;
-            margin-top: 15px;
-            border-radius: 8px;
-        }
-        .news-image {
-            width: 100%;
-            margin-top: 15px;
-            border-radius: 8px;
-        }
-        footer {
-            background-color: #003366;
-            color: white;
-            text-align: center;
-            padding: 20px;
-            margin-top: 40px;
-        }
-        .social-links a {
-            color: white;
-            margin: 0 10px;
-            text-decoration: none;
-        }
-    </style>
+    .logo-jayme {
+      height: 50px;
+    }
+
+    .header-text {
+      text-align: center;
+      flex: 1;
+    }
+
+    .bandeira-mt {
+      height: 35px;
+    }
+
+    section {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    h2 {
+      color: #003366;
+    }
+
+    .bio-image,
+    .noticia-image {
+      width: 100%;
+      margin-top: 15px;
+      border-radius: 4px;
+    }
+
+    footer {
+      background-color: #003366;
+      color: white;
+      text-align: center;
+      padding: 10px 0;
+      margin-top: 40px;
+    }
+
+    a {
+      color: #003366;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
 <body>
 
-<header>
-    <h1>Senador Jayme Campos</h1>
-    <p>Trabalho, compromisso e resultados para Mato Grosso</p>
-</header>
+  <header class="site-header">
+    <img src="logo-jayme.png" alt="Logo Jayme Campos" class="logo-jayme">
+    
+    <div class="header-text">
+      <h1>Senador Jayme Campos</h1>
+      <p>Trabalho, compromisso e resultados para Mato Grosso</p>
+    </div>
+    
+    <img src="bandeira-mt.png" alt="Bandeira de Mato Grosso" class="bandeira-mt">
+  </header>
 
-<section>
+  <section>
     <h2>Biografia</h2>
     <p><strong>Jayme Veríssimo de Campos</strong>, 73 anos, é natural de Mato Grosso e possui mais de 40 anos de vida pública. Foi prefeito de Várzea Grande (1983–1988), governador de MT (1991–1995) e retornou à prefeitura por dois mandatos (1997–2004). Foi eleito senador em 2006 e novamente em 2018, com mais de <strong>490 mil votos</strong>. É casado com <strong>Lucimar Sacre de Campos</strong>, pai de quatro filhos e avô de quatro netos. Irmão do deputado estadual <strong>Júlio Campos</strong>, Jayme atua em diversas comissões no Senado e já destinou mais de <strong>R$ 1 bilhão</strong> em emendas ao estado de Mato Grosso.</p>
-    <img src="Site%2001.jpeg" alt="Senador Jayme Campos" class="bio-image">
-</section>
+    <img src="jayme-biografia.jpeg" alt="Jayme Campos em sessão" class="bio-image">
+  </section>
 
-<section>
+  <section>
     <h2>Investimentos por Região de Mato Grosso</h2>
     <p>Valores destinados via emendas parlamentares (2023–2024)</p>
-    <div id="grafico" style="width: 100%; height: 400px;"></div>
-    <script>
-        var data = [{
-            x: ['Centro-Sul', 'Norte', 'Noroeste', 'Sudeste'],
-            y: [24000000, 8000000, 6000000, 5500000],
-            type: 'bar',
-            marker: {
-                color: ['#1b998b', '#ed7d3a', '#143642', '#ffc857']
-            }
-        }];
+    <div id="grafico-emendas" style="height: 400px;"></div>
+  </section>
 
-        var layout = {
-            margin: { t: 30 },
-            yaxis: {
-                title: 'Valor (R$)',
-                tickprefix: 'R$ ',
-                separatethousands: true
-            },
-            xaxis: {
-                title: 'Região de Planejamento'
-            }
-        };
-
-        Plotly.newPlot('grafico', data, layout);
-    </script>
-</section>
-
-<section>
+  <section>
     <h2>Notícias</h2>
     <ul>
-        <li><a href="https://www.agenciadanoticia.com.br/mato-grosso/noticia/140429/projeto-de-jayme-campos-propoe-revelar-minerais-escondidos-nos-produtos-do-dia-a-dia" target="_blank">Jayme propõe revelar minerais escondidos nos produtos do dia a dia</a></li>
-        <li><a href="https://www.vgnoticias.com.br/politica/jayme-campos-propoe-transformar-riquezas-minerais-em-trunfo-contra-tarifaco-dos-eua/134473" target="_blank">Transformar riquezas minerais em trunfo contra tarifaço dos EUA</a></li>
-        <li><a href="https://issoenoticia.com.br/jayme-campos-defende-diplomacia-e-coalizao-internacional-contra-o-tarifaco/" target="_blank">Diplomacia e coalizão internacional contra o tarifaço</a></li>
-        <li><a href="https://fococidade.com.br/materia/69298/jayme-cobra-plano-de-contingencia-do-governo-federal-contra-tarifaco-" target="_blank">Jayme cobra plano de contingência contra tarifaço</a></li>
+      <li><strong><a href="https://www.exemplo.com/materia-saude" target="_blank">Jayme destina recursos para a saúde em todo o estado</a></strong><br>
+      Emendas viabilizam reformas de hospitais e aquisição de ambulâncias em diversas regiões de MT.</li>
+      <br>
+      <li><strong><a href="https://www.exemplo.com/materia-educacao" target="_blank">R$ 10 milhões para a educação técnica</a></strong><br>
+      Senador garante investimento para escolas técnicas em municípios do Norte e Noroeste mato-grossense.</li>
     </ul>
-    <img src="8950DE82-FAEA-4556-B028-3D2C698710B3.jpeg" alt="Jayme discursando" class="news-image">
-    <img src="875E4131-EF52-4E28-8AB3-97FFAAAA897A.jpeg" alt="Jayme com senadores" class="news-image">
-</section>
+    <img src="jayme-noticia.jpeg" alt="Jayme em visita técnica" class="noticia-image">
+  </section>
 
-<footer>
-    <p>&copy; 2025 Senador Jayme Campos | Desenvolvido para fins institucionais</p>
-    <div class="social-links">
-        <a href="https://www.instagram.com/jaymecamposmt?igsh=ODlidnV3dWVnd3U3" target="_blank">Instagram</a> |
-        <a href="https://m.facebook.com/jayme.campos/?" target="_blank">Facebook</a> |
-        <a href="https://x.com/jaymecamposmt?s=21" target="_blank">X (Twitter)</a> |
-        <a href="https://www.tiktok.com/@jaymecamposmt" target="_blank">TikTok</a>
-    </div>
-</footer>
+  <footer>
+    © 2025 Senador Jayme Campos | Desenvolvido para fins institucionais
+  </footer>
+
+  <script>
+    var dados = [{
+      x: ['Centro-Sul', 'Norte', 'Noroeste', 'Sudeste'],
+      y: [24500000, 8500000, 7200000, 5500000],
+      type: 'bar',
+      marker: {
+        color: ['#2a9d8f', '#e76f51', '#264653', '#f4a261']
+      }
+    }];
+
+    var layout = {
+      margin: { t: 30 },
+      xaxis: { title: 'Região de Planejamento' },
+      yaxis: { title: 'Valor (R$)' }
+    };
+
+    Plotly.newPlot('grafico-emendas', dados, layout, {responsive: true});
+  </script>
 
 </body>
 </html>
